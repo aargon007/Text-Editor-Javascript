@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My text editor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/89f0dd1ca3.js" crossorigin="anonymous"></script>
+</head>
+<body class="lg:container lg:mx-auto bg-blue-300">
+    <div class="md:px-60 px-10 py-4  mt-10 space-y-3">
+        <h1 class="text-3xl font-semibold font-mono text-center">My Text Edior</h1>
+        <div class="border-2 border-blue-900 p-4 space-y-3">
+            <div class="grid md:grid-cols-3 grid-cols-1 content-between md:gap-20 gap-5">
+                <div>
+                    <button class="font-bold px-3 rounded-md hover:bg-blue-500" id="bold">B</button>
+                    <button class="font-bold italic font-mono px-3 rounded-md hover:bg-blue-500" id="italic">I</button>
+                    <button class="font-bold px-3 underline font-serif decoration-2 rounded-md hover:bg-blue-500" id="underline">U</button>
+                </div>
+                <div class="space-x-2">
+                    <button class="px-3 rounded-md focus:bg-cyan-600 hover:bg-blue-500 focus:text-white" id="align-left"><i class="fa-solid fa-align-left"></i></button>
+                    <button class="px-3 rounded-md focus:bg-cyan-600 hover:bg-blue-500 focus:text-white" id="align-right"><i class="fa-solid fa-align-right"></i></button>
+                    <button class="px-3 rounded-md focus:bg-cyan-600 hover:bg-blue-500 focus:text-white" id="align-center"><i class="fa-solid fa-align-center"></i></button>
+                    <button class="px-3 rounded-md focus:bg-cyan-600 hover:bg-blue-500 focus:text-white" id="align-justify"><i class="fa-solid fa-align-justify"></i></button>
+                </div>
+                <div class="space-x-2">
+                    <input type="number" name="" id="font-size" class="w-1/4 outline-none" value="17">
+                    <button class="font-bold px-3 rounded-md hover:bg-blue-500" id="cases">aA</button>
+                    <input type="color" name="" id="color">
+                </div>
+            </div>
+            <hr class=" border-black">
+            <textarea name="" id="textarea" class="w-full p-4 outline-none h-80"></textarea>
+        </div>
+    </div>
+    <script>
+        const textArea = document.getElementById("textarea");
+        textArea.style.fontSize = "20px";
+        
+        function style(type){
+            type.classList.toggle("bg-indigo-500");
+            type.classList.toggle("text-white");
+        }
+        //bold
+        document.getElementById("bold").addEventListener("click", function(){
+            textArea.classList.toggle("font-bold");
+            style(bold);
+        })
+        //italic
+        document.getElementById("italic").addEventListener("click", function(){
+            textArea.classList.toggle("italic");
+            style(italic);
+        })
+        //underline
+        document.getElementById("underline").addEventListener("click", function(){
+            textArea.classList.toggle("underline");
+            style(underline);
+        })
+        //align-left
+        document.getElementById("align-left").addEventListener("click", function(){
+            textArea.style.textAlign = "left"
+        })
+        //align-right
+        document.getElementById("align-right").addEventListener("click", function(){
+            textArea.style.textAlign = "right"
+
+        })
+        //align-center
+        document.getElementById("align-center").addEventListener("click", function(){
+            textArea.style.textAlign = "center"
+        })
+        //align-justify
+        document.getElementById("align-justify").addEventListener("click", function(){
+            textArea.style.textAlign = "justify"
+        })
+        //font-size
+        const fontSizes = document.getElementById("font-size");
+        fontSizes.addEventListener("input", function(){
+            textArea.style.fontSize = `${fontSizes.value}px`;
+        })
+        //case
+        document.getElementById("cases").addEventListener("click", function(){
+            textArea.classList.toggle("uppercase");
+            style(cases)
+        })
+        //color
+        document.getElementById("color").addEventListener("input", function(){
+            textArea.style.color = document.getElementById("color").value;
+        })
+
+    </script>
+</body>
+</html>
